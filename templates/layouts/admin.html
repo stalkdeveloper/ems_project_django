@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}EMS Project{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully responsive admin theme which can be used to build CRM, CMS, ERP, etc." name="description" />
+    <meta content="HIPL" name="author" />
+    <meta content="{{ csrf_token }}" name="csrf-token" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'admin/images/page_loader.gif' %}">
+
+    {% include 'partials/admin/hstyle.html' %}
+
+    <!-- Include custom CSS files here -->
+    {% block extra_css %}
+    {% endblock %}
+</head>
+<body>
+    <div class="loader-div" style="display: none;">
+        <div><img src="{% static 'admin/images/page_loader.gif' %}" width="100" alt="Loading..."></div>
+    </div>
+
+    <!-- Begin page -->
+    <div class="wrapper">
+        <!-- ========== Topbar Start ========== -->
+        {% include 'partials/admin/header.html' %}
+        <!-- ========== Topbar End ========== -->
+
+        <!-- ========== Left Sidebar Start ========== -->
+        {% include 'partials/admin/sidebar.html' %}
+        <!-- ========== Left Sidebar End ========== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <div class="content">
+                <!-- Start Content-->
+                <div class="container-fluid">
+                    {% block content %}
+                    <!-- Main content goes here -->
+                    {% endblock %}
+                </div>
+                <!-- container -->
+            </div>
+            <!-- content -->
+
+            {% include 'partials/admin/footer.html' %}
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- END wrapper -->
+
+    <div class="popup_render_div"></div>
+
+    {% include 'partials/admin/fscript.html' %}
+
+    <!-- Include custom JS files here -->
+    {% block extra_js %}
+    {% endblock %}
+</body>
+</html>
